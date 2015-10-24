@@ -1,15 +1,15 @@
 Name:       ise-engine-sunpinyin
 Summary:    Chinese Pinyin ISE
-Version:    0.0.1518
+Version:    1.0.0
 Release:    1
-Group:      TO_BE/FILLED_IN
+Group:      Graphics & UI Framework/Input
 License:    LGPL-2.1+ and CDDL-1.0
 Source0:    %{name}-%{version}.tar.gz
 BuildRequires:  prelink
 BuildRequires:  pkgconfig(isf)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(ecore)
+BuildRequires:  pkgconfig(ecore-imf)
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 
@@ -51,9 +51,11 @@ cat %{_builddir}/%{buildsubdir}/OPENSOLARIS.LICENSE >> %{buildroot}%{_datadir}/l
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_datadir}/scim/icons/sunpinyin_logo.png
 %{_datadir}/scim/ise-engine-sunpinyin/*
+%{_datadir}/packages/*
 %{_libdir}/scim-1.0/1.4.0/IMEngine/ise-engine-sunpinyin.so
 %{_libdir}/libsunpinyin*.so
 /usr/share/license/%{name}
